@@ -1,0 +1,166 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #50e3c2;
+    --background-color: #f4f7f6;
+    --text-color: #333;
+    --container-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --error-color: #d0021b;
+    --success-color: #0b875b;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    color: #aaa;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.container {
+    background: var(--container-bg);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: #777;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.upload-box {
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: border-color 0.3s;
+}
+
+.upload-box:hover {
+    border-color: var(--primary-color);
+}
+
+/* This is the magic line that hides the default "Choose File" button */
+input[type="file"] {
+    display: none;
+}
+
+.upload-btn, .grade-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    margin: 5px;
+}
+
+.upload-btn {
+    background-color: #eaf2fe;
+    color: var(--primary-color);
+}
+
+.upload-btn:hover {
+    background-color: #dce9fd;
+}
+
+.grade-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.grade-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+}
+
+.output-section {
+    text-align: left;
+}
+
+.status-box {
+    background-color: #f9f9f9;
+    border-left: 4px solid var(--secondary-color);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.status-box p {
+    margin: 5px 0;
+}
+
+.result-box {
+    background-color: var(--container-bg);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    line-height: 1.8;
+}
+
+/* Styling for the Markdown output */
+.result-box h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+.result-box h4 {
+    color: #444;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.result-box p {
+    margin: 10px 0;
+}
+
+.result-box ul {
+    padding-left: 20px;
+}
+
+.result-box li {
+    margin-bottom: 8px;
+}
+
+.result-box strong {
+    color: var(--success-color);
+}
+
+.error {
+    color: var(--error-color) !important;
+    font-weight: 600;
+}
+
+.processing {
+    color: var(--primary-color);
+}
