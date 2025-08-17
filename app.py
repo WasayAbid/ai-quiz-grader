@@ -111,33 +111,31 @@ def grade():
 			status_updates.append("🔗 Vector store created and connected to Pinecone.")
 			# 4. Grading query (plain text)
 			status_updates.append("🤖 Sending extracted text to Gemini for grading...")
+			
+			# --- QUERY WITH MULTI-FACTOR GRADING ---
 			query = """
-Review the provided 'Peer Feedback Workshop' document. 
-The document contains handwritten answers to 7 peer-review questions about an argument essay.
+			Review the provided 'Peer Feedback Workshop' document which contains handwritten answers.
 
-Here are the 7 peer-review questions in the document:
-1. What (in your own words) is the essay’s thesis? 
-2. Does the thesis assert a specific, explicit, debatable, and defendable claim? If not, which areas need work? 
-3. Does each body paragraph have a well-developed topic sentence that supports the thesis or offers a counter-argument to the thesis? 
-4. Does each paragraph have sufficient support? 
-5. How many reasons does the writer offer to support his/her claim? In abbreviated form list the writer’s reasons. 
-6. How clear is the essay’s structure? Should the reasons be rearranged to add emphasis to the writer’s argument? Is the logic coherent? 
-7. What are some of the warrants of the essay? Do any of these assumptions need to be explicitly addressed by the author? 
+			Your task: Act as an English instructor grading the quality of the handwritten peer feedback itself. For each handwritten answer provided in the document, you must analyze and grade it based on the following three criteria:
 
-Your task: Using the specific handwritten answers from the document as context, act as an instructor and analyze the feedback by following these steps:
+			1.  **Answer Quality & Insightfulness**: How helpful, specific, and insightful is the feedback? Does it provide clear, actionable advice?
+			2.  **Grammar & Spelling**: Is the writing grammatically correct with no spelling errors?
+			3.  **Writing Style & Clarity**: Is the feedback written in a clear, concise, and professional manner?
 
-For each of the 7 questions:
-1. Restate the original peer-review question. 
-2. Summarize the handwritten feedback provided. 
-3. Analyze the quality and clarity of the feedback (e.g., is it constructive, specific, vague, insightful, etc.?). 
-4. Suggest how the feedback itself could be improved to make it more useful to the essay writer. 
+			Please structure your output as a detailed report as follows:
 
-After analyzing all 7 questions separately:
-- Provide an **Overall Assessment**: Highlight the key strengths and weaknesses of the peer feedback as a whole. 
-- Give a **Score (1–10)** for the overall quality of the feedback. 
-- Return the result as a **structured report**, with clear headings for each question and the overall assessment.
-"""
+			**Part 1: Question-by-Question Analysis**
+			For each of the 7 feedback questions in the document:
+			-   First, restate the original question.
+			-   Next, summarize the handwritten answer that was provided.
+			-   Finally, provide a detailed **"Instructor's Analysis"** that explicitly evaluates the answer against the three criteria above (Answer Quality, Grammar, and Writing Style).
 
+			**Part 2: Final Assessment**
+			After analyzing all the answers:
+			-   Provide an **"Overall Assessment"** of the reviewer's performance, summarizing their strengths and weaknesses across all three criteria.
+			-   Give a **"Final Score out of 10"**, where this single score is a holistic reflection of the combined quality of their answers, their grammar, and their writing style.
+			"""
+			
 			qa_chain = RetrievalQA.from_chain_type(
 				llm=llm,
 				chain_type="stuff",
