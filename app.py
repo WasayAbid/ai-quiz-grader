@@ -112,13 +112,32 @@ def grade():
 			# 4. Grading query (plain text)
 			status_updates.append("🤖 Sending extracted text to Gemini for grading...")
 			query = """
-			Review the provided document about "ensemble learning". The document answers the question "What is ensemble learning? When to use ensemble learning?" and discusses bagging, boosting, variance, and bias.
-			Using that specific document as the student's answer, provide a structured report in plain text (no markdown) with:
-			1. A well-structured, correct answer to the original question.
-			2. Analysis of the student's answer: correct statements, missing/incorrect information.
-			3. Corrections for grammar/spelling mistakes.
-			4. A score out of 10 and brief feedback.
-			"""
+Review the provided 'Peer Feedback Workshop' document. 
+The document contains handwritten answers to 7 peer-review questions about an argument essay.
+
+Here are the 7 peer-review questions in the document:
+1. What (in your own words) is the essay’s thesis? 
+2. Does the thesis assert a specific, explicit, debatable, and defendable claim? If not, which areas need work? 
+3. Does each body paragraph have a well-developed topic sentence that supports the thesis or offers a counter-argument to the thesis? 
+4. Does each paragraph have sufficient support? 
+5. How many reasons does the writer offer to support his/her claim? In abbreviated form list the writer’s reasons. 
+6. How clear is the essay’s structure? Should the reasons be rearranged to add emphasis to the writer’s argument? Is the logic coherent? 
+7. What are some of the warrants of the essay? Do any of these assumptions need to be explicitly addressed by the author? 
+
+Your task: Using the specific handwritten answers from the document as context, act as an instructor and analyze the feedback by following these steps:
+
+For each of the 7 questions:
+1. Restate the original peer-review question. 
+2. Summarize the handwritten feedback provided. 
+3. Analyze the quality and clarity of the feedback (e.g., is it constructive, specific, vague, insightful, etc.?). 
+4. Suggest how the feedback itself could be improved to make it more useful to the essay writer. 
+
+After analyzing all 7 questions separately:
+- Provide an **Overall Assessment**: Highlight the key strengths and weaknesses of the peer feedback as a whole. 
+- Give a **Score (1–10)** for the overall quality of the feedback. 
+- Return the result as a **structured report**, with clear headings for each question and the overall assessment.
+"""
+
 			qa_chain = RetrievalQA.from_chain_type(
 				llm=llm,
 				chain_type="stuff",
