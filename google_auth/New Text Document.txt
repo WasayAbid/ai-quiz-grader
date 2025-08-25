@@ -1,1 +1,0 @@
-set GOOGLE_APPLICATION_cREDENTIALS=CUsersabdulDesktopWorkCSP SolutionsRAG-quiz gradergoogle_authvision_key.json
