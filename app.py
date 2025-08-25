@@ -24,7 +24,6 @@ import langchain
 # 2. INITIALIZE FLASK APP
 # ==============================================================================
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'
 app.config['UPLOAD_FOLDER'] = 'uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
